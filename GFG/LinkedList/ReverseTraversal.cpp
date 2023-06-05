@@ -18,9 +18,9 @@ void reverseTraversal(Node *head){
     if(head == NULL){
         return;
     }
-
-    cout<<head->data<<" ";
     reverseTraversal(head->next);
+    cout<<head->data<<" ";
+    
 }
 
 int main(){
