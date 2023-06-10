@@ -58,6 +58,22 @@ int searchNode(Node *head,int val){
     
 }
 
+int recSearchNode(Node *head,int val,int pos){
+    Node *temp = head;
+    if(temp == NULL){
+        return -1;
+    }
+
+    if(temp->data == val){
+        return pos;
+    }
+    else{
+        pos = recSearchNode(temp->next,val,pos+1);
+    }
+
+    return pos;
+}
+
 int main(){
     Node *head = new Node(10);
     insertAtEnd(head,20);
@@ -68,5 +84,7 @@ int main(){
     cout<<endl;
     cout<<"Considering the starting index at zero: "<<endl;
     cout<<searchNode(head,30)<<endl;
+    cout<<"===================="<<endl;
+    cout<<recSearchNode(head,20,0)<<endl;
     return 0;
 }
