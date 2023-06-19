@@ -44,11 +44,29 @@ int prefixSUm(int arr[],int n){
     return ans;
 }
 
+// Kadane's Algorithm => O(N) linear time solution
+// Best Approach
+int KadaneSum(int arr[],int n){
+    int currSum=0;
+    int MaxSum=0;
+
+    for(int i=0;i<n;i++){
+        currSum = currSum + arr[i];
+        if(currSum < 0){
+            currSum = 0;
+        }
+
+        MaxSum = max(MaxSum,currSum);
+    }
+    return MaxSum;
+}
+
 int main(){
     int arr[]={1,2,3,4,-1,-4,5,6,7,-3,-5,0};
     int n = sizeof(arr)/sizeof(arr[0]);
 
     cout<<subArraySum1(arr,n)<<endl;
     cout<<prefixSUm(arr,n)<<endl;
+    cout<<KadaneSum(arr,n)<<endl;
     return 0;
 }
